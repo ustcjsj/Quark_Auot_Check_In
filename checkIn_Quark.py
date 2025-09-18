@@ -3,6 +3,23 @@ import re
 import sys 
 import requests 
 
+import requests
+
+app_Token = os.getenv("APP_TOKEN").split('\n|&&')
+
+
+def wx_pusher_send_by_webapi(msg):
+    webapi = 'http://wxpusher.zjiecode.com/api/send/message'  # 固定网站
+    data = {
+        "appToken": app_Token,
+        "content": msg,  # 这是主体内容
+        "summary": "",  # 该参数可选，默认为 msg 的前10个字符
+        "contentType": 1,
+        "topicIds": ["10549"],  # 应用列表的ID
+    }
+    result = requests.post(url=webapi, json=data)
+    return result.text
+
 cookie_list = os.getenv("COOKIE_QUARK").split('\n|&&')
 
 # 替代 notify 功能
@@ -173,7 +190,8 @@ def main():
 
         i += 1
 
-    # print(msg)
+    # send to wxpusher
+    wx_pusher_send_by_webapi(msg)
 
     try:
         send('夸克自动签到', msg)
