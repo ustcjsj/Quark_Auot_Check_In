@@ -3,11 +3,9 @@ import re
 import sys 
 import requests
 
-pusher_app_token_list = os.getenv("WX_PUSHER_APP_TOKEN").split('\n|&&')
-pusher_app_token = pusher_app_token_list[0] # 获取列表的第一个元素
+pusher_app_token = os.getenv("WX_PUSHER_APP_TOKEN")
 
-pusher_uid_list = os.getenv("WX_PUSHER_UID").split('\n|&&')
-pusher_uid = pusher_uid_list[0] # 获取列表的第一个元素
+pusher_uid = os.getenv("WX_PUSHER_UID")
 
 def wx_pusher_send_by_webapi(msg):
     webapi = 'https://wxpusher.zjiecode.com/api/send/message'  # 固定网站
