@@ -4,18 +4,20 @@ import sys
 import requests 
 
 import requests
-//APP_TOKEN : WX_PUSHER的app token
-app_Token = os.getenv("APP_TOKEN").split('\n|&&')
+
+pusher_app_token = os.getenv("WX_PUSHER_APP_TOKEN").split('\n|&&')
+pusher_uid = os.getenv("WX_PUSHER_UID").split('\n|&&')
 
 
 def wx_pusher_send_by_webapi(msg):
     webapi = 'http://wxpusher.zjiecode.com/api/send/message'  # 固定网站
     data = {
-        "appToken": app_Token,
+        "appToken": pusher_app_token,
         "content": msg,  # 这是主体内容
         "summary": "",  # 该参数可选，默认为 msg 的前10个字符
         "contentType": 1,
-        "topicIds": ["10549"],  # 应用列表的ID
+        "uids":[pusher_uid],
+        #"topicIds": ["10549"],  # 应用列表的ID
     }
     result = requests.post(url=webapi, json=data)
     return result.text
