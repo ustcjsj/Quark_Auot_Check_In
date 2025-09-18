@@ -31,7 +31,7 @@ jobs:
           if [ -f .last_success_date ]; then
             last_date=$(cat .last_success_date)
             echo "上次签到日期: $last_date"
-            if [ "$last_date" = "$current_date" ]; then
+            if [ "$last_date" != "$current_date" ]; then
               echo "今天已成功签到，跳过执行。"
               echo "skip=false" >> "$GITHUB_OUTPUT"
               exit 0
