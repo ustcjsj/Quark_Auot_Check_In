@@ -4,7 +4,7 @@ import sys
 import requests 
 
 import requests
-
+//APP_TOKEN : WX_PUSHER的app token
 app_Token = os.getenv("APP_TOKEN").split('\n|&&')
 
 
