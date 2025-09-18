@@ -1,8 +1,6 @@
 import os 
 import re 
 import sys 
-import requests 
-
 import requests
 
 pusher_app_token = os.getenv("WX_PUSHER_APP_TOKEN").split('\n|&&')
@@ -10,7 +8,7 @@ pusher_uid = os.getenv("WX_PUSHER_UID").split('\n|&&')
 
 
 def wx_pusher_send_by_webapi(msg):
-    webapi = 'http://wxpusher.zjiecode.com/api/send/message'  # 固定网站
+    webapi = 'https://wxpusher.zjiecode.com/api/send/message'  # 固定网站
     data = {
         "appToken": pusher_app_token,
         "content": msg,  # 这是主体内容
@@ -20,7 +18,7 @@ def wx_pusher_send_by_webapi(msg):
         #"topicIds": ["10549"],  # 应用列表的ID
     }
     result = requests.post(url=webapi, json=data)
-    return result.text
+    print(result.text)
 
 cookie_list = os.getenv("COOKIE_QUARK").split('\n|&&')
 
