@@ -55,7 +55,7 @@
 
 1. 打开 Fork 后的仓库，进入 **Settings -> Secrets and variables -> Actions**。
 2. 点击 **Repository secrets** 分区下的 **New repository secret** 按钮。
-3. 创建名为 `COOKIE_QUARK` 的 Secret。
+3. 创建名为 `COOKIE_QUARK` 的 Secret。 此外，还有WX_PUSHER_APP_TOKEN、WX_PUSHER_UID
 4. 将整理好的 Cookie 信息粘贴到 "Secret" 输入框中并保存。
 
 ---
