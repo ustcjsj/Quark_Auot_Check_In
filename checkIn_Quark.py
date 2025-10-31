@@ -12,6 +12,7 @@ def wx_pusher_send_by_webapi(msg):
     data = {
         "appToken": pusher_app_token,
         "content": msg,
+        "summary":"夸克网盘自动签到任务",
         "contentType": 1,
         "uids":[pusher_uid]
     }
